@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=5mind Desktop
+Exec=electron
+Icon=com.fivemind.Desktop
+Type=Application
+Categories=Network;Utility;
+StartupNotify=true

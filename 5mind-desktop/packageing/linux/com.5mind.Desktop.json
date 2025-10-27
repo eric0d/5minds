@@ -1,0 +1,33 @@
+{
+  "id": "com.5mind.Desktop",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "25.08",
+  "sdk": "org.freedesktop.Sdk",
+  "sdk-version": "25.08",
+  "base": "freedesktop-sdk-25.08",
+  "finish": {
+    "desktop-id": "com.5mind.Desktop",
+    "icon": "icon.png",
+    "share": [
+      "desktop",
+      "icons"
+    ]
+  },
+  "modules": [
+    {
+      "name": "5mind-desktop",
+      "buildsystem": "simple",
+      "build-commands": [
+        "npm install --production",
+        "npm run build"
+      ],
+      "sources": [
+        {
+          "type": "dir",
+          "path": "../.."
+        }
+      ]
+    }
+  ]
+}
+

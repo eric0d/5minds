@@ -1,0 +1,50 @@
+{
+  "app-id": "com.fivemind.Desktop",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "25.08",
+  "sdk": "org.freedesktop.Sdk",
+  "command": "electron",
+  "finish-args": [
+    "--share=network",
+    "--socket=x11",
+    "--socket=wayland",
+    "--device=dri"
+  ],
+  "modules": [
+    {
+      "name": "nodejs",
+      "buildsystem": "simple",
+      "build-commands": [],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://nodejs.org/dist/v22.20.0/node-v22.20.0-linux-x64.tar.xz",
+          "sha256": "00bbd05e306ea68b6e13e17360d0e2f680b493ef95f2fea1c4296ff7437530bc"
+        }
+      ]
+    },
+    {
+      "name": "5mind-desktop",
+      "buildsystem": "simple",
+      "build-commands": [
+        "export PATH=/app/nodejs/bin:$PATH",
+        "npm install --production"
+      ],
+      "sources": [
+        {
+          "type": "dir",
+          "path": "/home/user/Downloads/5mind-desktop/"
+        }
+      ]
+    },
+    {
+      "name": "desktop-file",
+      "buildsystem": "simple",
+      "build-commands": [
+        "install -Dm644 /home/user/Downloads/5mind-desktop/packageing/linux/icon.png /app/share/icons/hicolor/256x256/apps/com.fivemind.Desktop.png",
+        "install -Dm644 /home/user/Downloads/5mind-desktop/packageing/linux/com.fivemind.Desktop.desktop /app/share/applications/com.fivemind.Desktop.desktop"
+      ]
+    }
+  ]
+}
+
